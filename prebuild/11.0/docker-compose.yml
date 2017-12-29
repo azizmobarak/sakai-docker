@@ -3,7 +3,7 @@ services:
   sakai_database:
     command: --character-set-server=utf8
     container_name: sakai_database
-    image: mysql:5.7
+    image: mariadb:10
     ports:
       - 3306:3306
     environment:

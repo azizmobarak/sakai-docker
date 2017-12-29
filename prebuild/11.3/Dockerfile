@@ -3,7 +3,7 @@ FROM tomcat:8
 # Delete the default WebApps
 RUN rm -Rf webapps/**/*
 
-# COPY http://source.sakaiproject.org/release/11.3/artifacts/sakai-bin-11.3.tar.gz
+# COPY http://source.sakaiproject.org/release/11.3/artifacts/sakai-bin-11.3.zip
 COPY ./components/ ./components/
 COPY ./lib/ ./lib/
 COPY ./licenses/ ./licenses/

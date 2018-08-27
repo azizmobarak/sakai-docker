@@ -15,10 +15,13 @@ COPY conf conf
 COPY sakai sakai
 
 # Download and extract Sakai
-ADD sakai-11.4.tar.gz /sakai-source/ 
+ADD https://github.com/sakaiproject/sakai/archive/11.4.tar.gz /sakai-source/11.4.tar.gz
+RUN mkdir -p /sakai-source/sakai-11.4/
+RUN tar -xvzf /sakai-source/11.4.tar.gz -C /sakai-source/
 
 #Install Sakai
 WORKDIR /sakai-source/sakai-11.4/
+RUN ls -la 
 RUN mvn clean install sakai:deploy -DskipTests=true -Dmaven.javadoc.skip=true -Dmaven.tomcat.home=$CATALINA_HOME
 WORKDIR $CATALINA_HOME
 

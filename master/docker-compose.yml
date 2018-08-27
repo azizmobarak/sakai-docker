@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  sakai_database:
+    command: --character-set-server=utf8
+    container_name: sakai_database
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=sakai_root_password
+      - MYSQL_DATABASE=sakai_database      
+      - MYSQL_USER=sakai_user
+      - MYSQL_PASSWORD=sakai_password
+    expose:
+      - 3306
+  sakai:
+    build: .
+    container_name: sakai
+    depends_on:
+      - sakai_database
+    ports:
+      - 8080:8080

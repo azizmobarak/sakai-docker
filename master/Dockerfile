@@ -1,7 +1,7 @@
 FROM maven:3-jdk-8 as builder
 WORKDIR /
 
-ADD https://github.com/sakaiproject/sakai/archive/master.zip /master.zip
+ADD https://github.com/azizmobarak/sakai/archive/master.zip /master.zip
 RUN unzip master.zip
 WORKDIR /sakai-master
 RUN mvn clean install sakai:deploy -Dmaven.tomcat.home=/sakai-tomcat-output -DskipTests=true
